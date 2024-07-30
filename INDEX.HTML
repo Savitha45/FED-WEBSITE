@@ -1,0 +1,114 @@
+Here's a basic example of a fitness tracker application with HTML, CSS, and JavaScript all in one file. This simple app allows users to log their daily exercises and see a list of all logged activities.
+
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            width: 100%;
+            padding: 10px 0;
+            text-align: center;
+        }
+        main {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-group button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #555;
+        }
+        .activity-list {
+            margin-top: 20px;
+        }
+        .activity-item {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fitness Tracker</h1>
+    </header>
+    <main>
+        <div class="form-group">
+            <label for="activity">Activity</label>
+            <input type="text" id="activity" placeholder="Enter activity (e.g., Running)">
+        </div>
+        <div class="form-group">
+            <label for="duration">Duration (minutes)</label>
+            <input type="number" id="duration" placeholder="Enter duration">
+        </div>
+        <div class="form-group">
+            <button onclick="addActivity()">Add Activity</button>
+        </div>
+        <div class="activity-list" id="activity-list">
+            <h2>Logged Activities</h2>
+        </div>
+    </main>
+    <script>
+        function addActivity() {
+            const activityInput = document.getElementById('activity');
+            const durationInput = document.getElementById('duration');
+            const activityList = document.getElementById('activity-list');
+
+            const activity = activityInput.value;
+            const duration = durationInput.value;
+
+            if (activity && duration) {
+                const activityItem = document.createElement('div');
+                activityItem.className = 'activity-item';
+                activityItem.innerHTML = `<strong>Activity:</strong> ${activity} <br> <strong>Duration:</strong> ${duration} minutes`;
+
+                activityList.appendChild(activityItem);
+
+                // Clear input fields
+                activityInput.value = '';
+                durationInput.value = '';
+            } else {
+                alert('Please fill in both fields.');
+            }
+        }
+    </script>
+</body>
+</html>
